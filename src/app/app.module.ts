@@ -11,7 +11,8 @@ import { RegisterComponent } from './register/register.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor, ErrorInterceptor } from './_helpers';
 import { AlertComponent } from './Alert';
-
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
 // used to create fake backend
 import { fakeBackendProvider } from './_helpers';
 @NgModule({
@@ -30,6 +31,8 @@ import { fakeBackendProvider } from './_helpers';
     ReactiveFormsModule,
     HttpClientModule,
     CommonModule,
+    MatFormFieldModule,
+    MatSelectModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

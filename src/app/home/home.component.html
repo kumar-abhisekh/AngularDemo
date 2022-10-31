@@ -1,1 +1,32 @@
-<p>home works!</p>
+<div *ngIf="isAdmin">
+  <mat-form-field>
+    <mat-label>Select Action</mat-label>
+    <mat-select
+      (selectionChange)="setAction($event)"
+      name="food"
+      [(value)]="selected"
+    >
+      <mat-option *ngFor="let action of actions" [value]="action['value']">
+        {{ action["viewValue"] }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <app-register *ngIf="addUserAction"></app-register>
+  <div *ngIf="addUserAction == false">
+    <h1>Hi {{ currentUser.firstName }}!</h1>
+    <h3>All registered users:</h3>
+    <ul>
+      <li *ngFor="let user of users">
+        {{ user["username"] }} ({{ user["firstName"] }} {{ user["lastName"] }})
+        -
+        <a (click)="deleteUser(user['id'])" class="text-danger">Delete</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div *ngIf="isAdmin == false">
+  <h1>Hi {{ currentUser.firstName }}!</h1>
+  <h1>last name :{{ currentUser["lastName"] }}!</h1>
+  <h1>account Details : yet to come</h1>
+</div>
